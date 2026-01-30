@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | Thayer Shop</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <nav id="main-nav" class="scrolled">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-microchip"></i> THAYER<span>SHOP</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">All Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html#faq">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-btn active">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 8rem; min-height: 80vh;">
+        <div class="container">
+            <h1 style="margin-bottom: 3rem;">Your Shopping Cart</h1>
+
+            <div id="cart-content">
+                <!-- Loaded via JS -->
+            </div>
+        </div>
+    </main>
+
+    <footer style="padding: 4rem 0; border-top: 1px solid var(--color-glass-border); margin-top: 5rem;">
+        <div class="container">
+            <div style="text-align: center; color: var(--color-text-dim); font-size: 0.9rem;">
+                &copy; 2026 Thayer School of Engineering. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('cart-content');
+
+            const renderCart = () => {
+                const items = thayerCart.items;
+
+                if (items.length === 0) {
+                    container.innerHTML = `
+                        <div class="glass-card" style="text-align: center; padding: 5rem;">
+                            <i class="fas fa-shopping-bag" style="font-size: 4rem; color: var(--color-glass-border); margin-bottom: 2rem;"></i>
+                            <h2>Your cart is empty</h2>
+                            <p>Looks like you haven't added anything to your cart yet.</p>
+                            <a href="products.html" class="btn btn-primary" style="margin-top: 1rem;">Browse Products</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let html = `
+                    <div class="grid-2" style="grid-template-columns: 2fr 1fr; align-items: flex-start;">
+                        <div class="cart-items">
+                `;
+
+                items.forEach(item => {
+                    html += `
+                        <div class="glass-card" style="margin-bottom: 1.5rem; display: flex; gap: 2rem; align-items: center;">
+                            <img src="${item.image}" alt="${item.name}" style="width: 100px; height: 100px; object-fit: cover; border-radius: var(--radius-sm);">
+                            <div style="flex: 1;">
+                                <h3 style="margin-bottom: 0.5rem;">${item.name}</h3>
+                                ${item.size ? `<p style="margin-bottom: 0.5rem; color: var(--color-text-dim);">Size: ${item.size}</p>` : ''}
+                                <p class="product-price">$${item.price.toFixed(2)}</p>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div class="form-group" style="margin-bottom: 0; width: 80px;">
+                                    <input type="number" value="${item.quantity}" min="1" onchange="thayerCart.updateQuantity(${item.id}, '${item.size}', this.value); location.reload();">
+                                </div>
+                                <button onclick="thayerCart.removeItem(${item.id}, '${item.size}'); location.reload();" style="background: none; border: none; color: #ff4d4d; cursor: pointer; font-size: 1.2rem;">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                        <div class="cart-summary glass-card" style="position: sticky; top: 100px;">
+                            <h3 style="margin-bottom: 1.5rem;">Order Summary</h3>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <span>Subtotal</span>
+                                <span>$${thayerCart.getTotal().toFixed(2)}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <span>Shipping</span>
+                                <span style="color: var(--color-primary-light);">FREE</span>
+                            </div>
+                            <hr style="border: none; border-top: 1px solid var(--color-glass-border); margin: 1.5rem 0;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 2rem; font-weight: 700; font-size: 1.2rem;">
+                                <span>Total</span>
+                                <span>$${thayerCart.getTotal().toFixed(2)}</span>
+                            </div>
+                            <a href="checkout.html" class="btn btn-primary" style="width: 100%; text-align: center;">Proceed to Checkout</a>
+                            <p style="margin-top: 1rem; font-size: 0.8rem; text-align: center; color: var(--color-text-dim);">Taxes calculated at checkout</p>
+                        </div>
+                    </div>
+                `;
+
+                container.innerHTML = html;
+            };
+
+            renderCart();
+        });
+    </script>
+</body>
+
+</html>

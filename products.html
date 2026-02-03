@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products | Demo Shop</title>
+    <title>All Products | Thayer Shop</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -13,8 +13,8 @@
     <nav id="main-nav" class="scrolled">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="assets/images/Demo-horizontal-white-new.svg" alt="Dartmouth Engineering" class="logo-white">
-                <img src="assets/images/Demo-horizontal-green-new.svg" alt="Dartmouth Engineering" class="logo-green">
+                <img src="assets/images/Thayer-horizontal-white-new.svg" alt="Dartmouth Engineering" class="logo-white">
+                <img src="assets/images/Thayer-horizontal-green-new.svg" alt="Dartmouth Engineering" class="logo-green">
                 <span class="logo-tag">SHOP</span>
             </a>
             <ul class="nav-links">
@@ -37,7 +37,7 @@
             <div style="margin-bottom: 3rem; text-align: center;">
                 <span class="category-tag">Collection</span>
                 <h1>Our Products</h1>
-                <p>Equipping the next generation of Demo engineers.</p>
+                <p>Equipping the next generation of Thayer engineers.</p>
             </div>
 
             <!-- Filters -->
@@ -72,7 +72,7 @@
     <footer style="padding: 4rem 0; border-top: 1px solid var(--color-glass-border); margin-top: 5rem;">
         <div class="container">
             <div style="text-align: center; color: var(--color-text-dim); font-size: 0.9rem;">
-                &copy; 2026 Demo School of Engineering. All rights reserved.
+                &copy; 2026 Thayer School of Engineering. All rights reserved.
             </div>
         </div>
     </footer>
@@ -91,8 +91,8 @@
             const renderProducts = (category = 'all', sort = 'popular') => {
                 grid.innerHTML = '';
                 let items = category === 'all'
-                    ? [...DemoProducts.all]
-                    : DemoProducts.getByCategory(category);
+                    ? [...ThayerProducts.all]
+                    : ThayerProducts.getByCategory(category);
 
                 // Sorting
                 if (sort === 'price-low') items.sort((a, b) => a.price - b.price);
@@ -112,7 +112,7 @@
                                 <p class="product-price">$${product.price.toFixed(2)}</p>
                             </div>
                         </a>
-                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="event.preventDefault(); DemoCart.addItem(DemoProducts.getById(${product.id}))">
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="event.preventDefault(); ThayerCart.addItem(ThayerProducts.getById(${product.id}))">
                             Add to Cart
                         </button>
                     `;

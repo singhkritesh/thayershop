@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details | Thayer Shop</title>
+    <title>Product Details | Demo Shop</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -13,8 +13,8 @@
     <nav id="main-nav" class="scrolled">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="assets/images/Thayer-horizontal-white-new.svg" alt="Dartmouth Engineering" class="logo-white">
-                <img src="assets/images/Thayer-horizontal-green-new.svg" alt="Dartmouth Engineering" class="logo-green">
+                <img src="assets/images/Demo-horizontal-white-new.svg" alt="Dartmouth Engineering" class="logo-white">
+                <img src="assets/images/Demo-horizontal-green-new.svg" alt="Dartmouth Engineering" class="logo-green">
                 <span class="logo-tag">SHOP</span>
             </a>
             <ul class="nav-links">
@@ -51,7 +51,7 @@
     <footer style="padding: 4rem 0; border-top: 1px solid var(--glass-border); margin-top: 5rem;">
         <div class="container">
             <div style="text-align: center; color: var(--color-text-dim); font-size: 0.9rem;">
-                &copy; 2026 Thayer School of Engineering. All rights reserved.
+                &copy; 2026 Demo School of Engineering. All rights reserved.
             </div>
         </div>
     </footer>
@@ -62,14 +62,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const productId = new URLSearchParams(window.location.search).get('id');
-            const product = ThayerProducts.getById(productId);
+            const product = DemoProducts.getById(productId);
 
             if (!product) {
                 window.location.href = 'products.html';
                 return;
             }
 
-            document.title = `${product.name} | Thayer Shop`;
+            document.title = `${product.name} | Demo Shop`;
 
             const detailContainer = document.getElementById('product-detail');
             detailContainer.innerHTML = `
@@ -133,12 +133,12 @@
             // Add to Cart Logic
             document.getElementById('add-to-cart-btn').addEventListener('click', () => {
                 const qty = parseInt(document.getElementById('qty').value);
-                ThayerCart.addItem(product, selectedSize, qty);
+                DemoCart.addItem(product, selectedSize, qty);
             });
 
             // Related Products
             const relatedGrid = document.getElementById('related-grid');
-            const related = ThayerProducts.getByCategory(product.category)
+            const related = DemoProducts.getByCategory(product.category)
                 .filter(p => p.id != product.id)
                 .slice(0, 3);
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo Shop | School of Engineering Marketplace</title>
+    <title>Thayer Shop | School of Engineering Marketplace</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -13,8 +13,8 @@
     <nav id="main-nav">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="assets/images/Demo-horizontal-white-new.svg" alt="Dartmouth Engineering" class="logo-white">
-                <img src="assets/images/Demo-horizontal-green-new.svg" alt="Dartmouth Engineering" class="logo-green">
+                <img src="assets/images/thayer-horizontal-white-new.svg" alt="Dartmouth Engineering" class="logo-white">
+                <img src="assets/images/thayer-horizontal-green-new.svg" alt="Dartmouth Engineering" class="logo-green">
                 <span class="logo-tag">SHOP</span>
             </a>
             <ul class="nav-links">
@@ -43,7 +43,7 @@
                         <p>This is a prototype built to test core buying flows in a college merchandise marketplace.
                             It’s not production code but reflects product thinking, design, and user flow. <!--Discover
                             premium apparel, technical accessories, and essential stationery designed for the
-                            Demo School of Engineering community.--></p>
+                            Thayer School of Engineering community.--></p>
                         <div class="hero-btns">
                             <a href="products.html" class="btn btn-primary">Shop Collection</a>
                             <a href="#featured" class="btn btn-outline" style="margin-left: 1rem;">View Featured</a>
@@ -125,13 +125,13 @@
             <div class="grid-3">
                 <div>
                     <a href="index.html" class="logo" style="margin-bottom: 1.5rem;">
-                        <img src="assets/images/Demo-horizontal-white.svg" alt="Dartmouth Engineering"
+                        <img src="assets/images/thayer-horizontal-white.svg" alt="Dartmouth Engineering"
                             class="logo-white">
-                        <img src="assets/images/Demo-horizontal-green.svg" alt="Dartmouth Engineering"
+                        <img src="assets/images/thayer-horizontal-green.svg" alt="Dartmouth Engineering"
                             class="logo-green">
                         <span class="logo-tag">SHOP</span>
                     </a>
-                    <p>The official marketplace for Demo School of Engineering students, faculty, and alumni.</p>
+                    <p>The official marketplace for Thayer School of Engineering students, faculty, and alumni.</p>
                 </div>
                 <div>
                     <h3>Quick Links</h3>
@@ -146,7 +146,7 @@
                 </div>
                 <div>
                     <h3>Contact Us</h3>
-                    <p>Demo School of Engineering<br>14 Engineering Dr, Hanover, NH 03755</p>
+                    <p>Thayer School of Engineering<br>14 Engineering Dr, Hanover, NH 03755</p>
                     <div style="display: flex; gap: 1rem; font-size: 1.2rem;">
                         <a href="#" style="color: var(--color-text-dim);"><i class="fab fa-instagram"></i></a>
                         <a href="#" style="color: var(--color-text-dim);"><i class="fab fa-twitter"></i></a>
@@ -156,7 +156,7 @@
             </div>
             <div
                 style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-glass-border); color: var(--color-text-dim); font-size: 0.9rem;">
-                &copy; 2026 Demo School of Engineering. All rights reserved.
+                &copy; 2026 Thayer School of Engineering. All rights reserved.
             </div>
         </div>
     </footer>
@@ -167,7 +167,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const grid = document.getElementById('featured-grid');
-            const featured = DemoProducts.getFeatured();
+            const featured = thayerProducts.getFeatured();
 
             featured.forEach(product => {
                 const card = document.createElement('div');
@@ -183,7 +183,7 @@
                             <p class="product-price">$${product.price.toFixed(2)}</p>
                         </div>
                     </a>
-                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="event.preventDefault(); DemoCart.addItem(DemoProducts.getById(${product.id}))">
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="event.preventDefault(); thayerCart.addItem(thayerProducts.getById(${product.id}))">
                         Add to Cart
                     </button>
                 `;
